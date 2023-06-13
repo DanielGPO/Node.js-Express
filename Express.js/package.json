@@ -1,0 +1,21 @@
+{
+  "name": "clone-node-e-express",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {
+    "express": "^4.18.2",
+    "nodemon": "^2.0.22"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "morgan": "^1.10.0"
+  }
+}

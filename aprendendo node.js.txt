@@ -1,0 +1,200 @@
+Node.js
+
+let initialMemory = process.memoryUsage().headUsed; === amount of memory used
+____________________________________________________
+ os - 
+
+const os = require('os');
+
+const server = {
+  "type":
+ 	os.type(),
+   "architecture": 
+	os.arch(),
+   "uptime":
+	os.uptime(),
+}
+console.log(server) === type: 'Windows', architecture: 'x64', uptime: 29158.35
+____________________________________________________
+util - util.pomisify()
+const getUserPromise = util.promisify(getUser);
+ 
+getUserPromise(id)
+  .then((user) => {
+      console.log(`User found! Their nickname is: ${user.nickname}`);
+  })
+  .catch((error) => {
+      console.log('User not found', error);
+  });
+ 
+getUser(1) // -> `User not found`
+getUser(5) // -> `User found! Their nickname is: Teddy`
+
+______________________________
+
+const trails = require('./trails.js');
+let util = require('util')
+
+const getTrailDistancePromise = util.promisify(getTrailDistance)
+
+
+getTrailDistance('North Country', callback)
+
+// Promisfy below!
+getTrailDistancePromise('North Country')
+.then((foundTrail) => {
+ const nickname = foundTrail.nickname;
+ const mi = foundTrail.miles;
+  console.log(`The ${nickname} is ${mi} miles long!`)
+}
+  ).catch((error) => {
+    console.log('Trail not found', error)
+  })
+  
+__________________________________________________________
+
+  // __dirname - path to current directory
+  // __filename - file name
+  // require - function to use modules
+  // module - info about current module
+  // process - info about env where the program is being executed
+)_______________________________________________________________________________________________________________________________)
+app.js: 
+
+const os = require('os')
+
+// informação sobre o usuário atual__
+const user = os.userInfo()
+// console.log(user);
+
+// system uptime em segundos__
+ //   console.log(os.uptime());
+
+
+const currentOs = {
+    name: os.type(),
+    release: os.release(),
+    totalMem: os.totalmem(),
+    freeMeme: os.freemem(),
+}
+//    console.log(currentOs);
+
+// path, caminho 
+//const path = require('path')
+
+//const filePath = path.join('/content', 'join', 'text.txt')
+
+
+// file reading
+const {readFileSync, writeFileSync} = require('fs')
+// const fs = require('fs') também serve
+//const first = readFileSync('./first.txt', 'utf8')
+//const second = readFileSync('./second.txt', 'utf-8')
+
+// mt zika, cria um arquivo e coloca coisas nele 
+writeFileSync('./result-sync.txt', `Here is the resut: ${currentOs.name}`)
+
+
+
+//console.log(first)
+//console.log(second)
+
+//console.log(path.sep);
+
+
+
+
+//const log = require('./logger.js')
+//log('message')
+//const path = require('path');
+//let pathObj = path.parse(__filename);
+
+
+
+
+
+
+    //const names = require('./2-names')
+   // const digaOla = require('./1-globals')
+   // const data = require('./3-otherWayToExport')
+   // require('./4-funcSum')
+   // console.log(data.items)
+   // console.log(data.singlePerson)
+    //digaOla(names.jhon)
+    //digaOla(names.peter)
+    //digaOla(names.gabriel)
+    
+________________________________________________________________________________________________________________________
+
+
+  package.json:
+  
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+
+
+____________________________________________________
+Ler e criar arquivos com node
+
+const { readFile, writeFile } = require('fs').promises
+const util = require('util')
+
+const start = async () => {
+    try {
+        const first = await readFile('./result-sync.txt', 'utf8')
+        await writeFile('./novo arquivo.txt', `Esse é um novo arquivo de texto criado com magia`, {flag: 'a'})
+        console.log(first);
+    } catch (error) {
+        console.log(error);
+    }
+}
+start()
+________________________________________________________________________________________________________________________
+// A forma certa de enviar/ler 
+ 
+const http = require('http')
+const fs = require('fs')
+
+http.createServer(function (req, res) {
+    const fileStream = fs.createReadStream('./result-sync.txt', 'utf8');
+    fileStream.on('open', () => {
+        fileStream.pipe(res)
+    })
+    fileStream.on('error', (err) => {
+        res.end(err)
+    })
+}).listen(5000)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
